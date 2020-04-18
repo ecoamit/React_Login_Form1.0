@@ -4,12 +4,15 @@ import { Link, useHistory } from "react-router-dom";
 
 const Home = () => {
   const jsonstring = localStorage.getItem("signuser");
-  const finaluser = JSON.parse(jsonstring);
+  const signuser = JSON.parse(jsonstring);
+  const jsonstring1 = localStorage.getItem("userdetails");
+  const userdetails = JSON.parse(jsonstring1);
   const history = useHistory();
 
   const clickevent = () => {
     return history.push("/Editpage");
   };
+
   const removeUser = () => {
     localStorage.removeItem("loguser");
   };
@@ -24,15 +27,13 @@ const Home = () => {
               Log Out
             </Button>
           </Link>
-          {/* <Link to="LoginForm">  <Button outline color="warning">warning</Button></Link> */}
-          {/* <Link to="About"><Button color="transparent" className="btn btn-outline-primary">About</Button></Link> */}
         </h1>
       </div>
       <Container fluid className="aboutuser">
-        <p>username: {finaluser.username}</p>
-        <p>My Name: {localStorage.getItem("name")}</p>
-        <p>Email ID: {localStorage.getItem("email")}</p>
-        <p>Contact me on Mobile: {localStorage.getItem("smobile")}</p>
+        <p>username: {signuser.username}</p>
+        <p>My Name: {userdetails.name}</p>
+        <p>Email ID: {userdetails.email}</p>
+        <p>Contact me on Mobile: {userdetails.mobile}</p>
         <br />
         <Button color="warning" onClick={clickevent}>
           Edit Details

@@ -3,22 +3,19 @@ import { Button } from "reactstrap";
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import { useHistory } from "react-router-dom";
 
-
-
 const Editpage = () => {
-  const initname = localStorage.getItem("name");
-const initmobile = localStorage.getItem("smobile");
-const initemail = localStorage.getItem("email");
-  const [name, setName] = useState(initname);
-  const [mobile, setMobile] = useState(initmobile);
-  const [email, setEmail] = useState(initemail);
+  const jsonstring1 = localStorage.getItem("userdetails");
+  const userdetailsold = JSON.parse(jsonstring1);
+  const [name, setName] = useState(userdetailsold.name);
+  const [mobile, setMobile] = useState(userdetailsold.mobile);
+  const [email, setEmail] = useState(userdetailsold.email);
   const history = useHistory();
+
+  const userdetails = { name, mobile, email };
 
   const handleChange = (e) => {
     e.preventDefault();
-    localStorage.setItem("name", name);
-    localStorage.setItem("smobile", mobile);
-    localStorage.setItem("email", email);
+    localStorage.setItem("userdetails", JSON.stringify(userdetails));
     return history.push("/Home");
   };
 
@@ -33,7 +30,6 @@ const initemail = localStorage.getItem("email");
             type="text"
             required
             name="name"
-            
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -44,7 +40,6 @@ const initemail = localStorage.getItem("email");
             type="number"
             required
             name="mobile"
-           
             value={mobile}
             onChange={(e) => setMobile(e.target.value)}
           />
@@ -55,7 +50,6 @@ const initemail = localStorage.getItem("email");
             type="email"
             required
             name="email"
-            
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />

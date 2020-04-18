@@ -11,22 +11,21 @@ const SignForm = () => {
   const history = useHistory();
 
   const signuser = { username, password };
+  const userdetails = { name, mobile, email };
 
   const handleChange = (e) => {
     e.preventDefault();
 
     localStorage.setItem("signuser", JSON.stringify(signuser));
-    localStorage.setItem("smobile", mobile);
-    localStorage.setItem("name", name);
-    localStorage.setItem("email", email);
+    localStorage.setItem("userdetails", JSON.stringify(userdetails));
 
     return history.push("/LoginForm");
 
-    setPassword("");
-    setUsername("");
-    setMobile("");
-    setName("");
-    setEmail("");
+    // setPassword("");
+    // setUsername("");
+    // setMobile("");
+    // setName("");
+    // setEmail("");
   };
 
   return (
@@ -61,6 +60,8 @@ const SignForm = () => {
             required
             name="email"
             placeholder="name@example.com"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            title="Invalid email address format "
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -82,6 +83,8 @@ const SignForm = () => {
             type="password"
             required
             name="password"
+            pattern="(?=.*\d).{8,}"
+            title="Must contain at least one number and at least 8 or more characters"
             placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

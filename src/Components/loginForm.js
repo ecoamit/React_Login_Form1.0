@@ -7,20 +7,10 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const history = useHistory();
 
-  const valueChange = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const value1Change = (e) => {
-    setPassword(e.target.value);
-  };
-
+  
   const handleChange = (e) => {
     e.preventDefault();
-    // if (username === "") {
-    //   alert("pls enter something");
 
-    // }
     const loguser = { username, password };
 
     // console.log(loginusername)
@@ -30,7 +20,7 @@ const LoginForm = () => {
     if (localStorage.getItem("loguser") === localStorage.getItem("signuser")) {
       return history.push("/Home");
     }
-    alert("Wrong Login Details");
+    alert("Invalid Login Details");
   };
 
   return (
@@ -44,7 +34,7 @@ const LoginForm = () => {
             name="username"
             placeholder="Username"
             value={username}
-            onChange={valueChange}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </FormGroup>
         <FormGroup>
@@ -55,7 +45,7 @@ const LoginForm = () => {
             name="password"
             placeholder="password"
             value={password}
-            onChange={value1Change}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </FormGroup>
       </Form>
