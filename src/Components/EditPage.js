@@ -3,11 +3,12 @@ import { Button } from "reactstrap";
 import { Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import { Link, useHistory } from "react-router-dom";
 
-const initname = localStorage.getItem("name");
-const initmobile = localStorage.getItem("smobile");
-const initemail = localStorage.getItem("email");
+
 
 const Editpage = () => {
+  const initname = localStorage.getItem("name");
+const initmobile = localStorage.getItem("smobile");
+const initemail = localStorage.getItem("email");
   const [name, setName] = useState(initname);
   const [mobile, setMobile] = useState(initmobile);
   const [email, setEmail] = useState(initemail);
@@ -32,7 +33,7 @@ const Editpage = () => {
             type="text"
             required
             name="name"
-            placeholder="Enter Your Name"
+            
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -43,7 +44,7 @@ const Editpage = () => {
             type="number"
             required
             name="mobile"
-            placeholder="Enter Your Name"
+           
             value={mobile}
             onChange={(e) => setMobile(e.target.value)}
           />
@@ -54,7 +55,7 @@ const Editpage = () => {
             type="email"
             required
             name="email"
-            placeholder="name@example.com"
+            
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
