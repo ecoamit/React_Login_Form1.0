@@ -7,14 +7,9 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const history = useHistory();
 
-  
   const handleChange = (e) => {
     e.preventDefault();
-
     const loguser = { username, password };
-
-    // console.log(loginusername)
-    // console.log(localStorage.getItem("username"))
     localStorage.setItem("loguser", JSON.stringify(loguser));
 
     if (localStorage.getItem("loguser") === localStorage.getItem("signuser")) {

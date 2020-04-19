@@ -22,7 +22,7 @@ const Home = () => {
       <div className="menu">
         <h1 className="text-center text-white mt-1">
           Welcome to THE ESSENTIALS
-          <Link to="SignForm">
+          <Link to="LoginForm">
             <Button onClick={removeUser} color="primary" className="btnofsign">
               Log Out
             </Button>
@@ -30,7 +30,7 @@ const Home = () => {
         </h1>
       </div>
       <Container fluid className="aboutuser">
-        <p>username: {signuser.username}</p>
+        <p>Username: {signuser.username}</p>
         <p>My Name: {userdetails.name}</p>
         <p>Email ID: {userdetails.email}</p>
         <p>Contact me on Mobile: {userdetails.mobile}</p>
